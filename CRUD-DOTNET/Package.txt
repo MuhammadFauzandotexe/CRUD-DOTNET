@@ -1,0 +1,48 @@
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 7.0.12
+dotnet add package Microsoft.EntityFrameworkCore --version 7.0.12
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 7.0.12
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add initialCreate
+
+//
+        using AppDbContext context = new();
+        
+        var name = "Yovani Rezakia Rezki";
+        var customer = context.Customers.FirstOrDefault(customer=>customer.CustomerName.Equals(name));
+        var remove = context.Customers.Remove(customer);
+        context.SaveChanges();
+        Console.WriteLine(remove);
+
+        // var customer = context.Customers.FirstOrDefault(customer=>customer.CustomerName.Equals("Yovani"));
+        // customer.CustomerName = "Yovani Rezakia Rezki";
+        // context.Customers.Update(customer);
+        // context.SaveChanges();
+
+        // var customers = context.Customers.ToList();
+        // var enumerable = customers.Where((customer) =>customer!.Id==1 );
+        // foreach (var customer in enumerable)
+        // {
+        //     Console.WriteLine(customer);
+        // }
+        // foreach (var customer in customers)
+        // {
+        //     Console.WriteLine(customer);
+        // }
+
+
+        //</summary>
+
+        // Customer? customer = context.Customers.FirstOrDefault(customer => customer!.CustomerName.Equals("Yovani"));
+        // Console.WriteLine(customer);
+        //
+        // Customer customer = new()
+        // {
+        //     CustomerName = "Yovani",
+        //     Address = "Jln Lubuk Minturun",
+        //     Email = "yovani@gmail.com",
+        //     PhoneNumber = "0888812345"
+        // };
+        //
+        // context.Customers.Add(customer);
+        // var changes = context.SaveChanges();
+        // Console.WriteLine(changes);
